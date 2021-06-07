@@ -4,8 +4,9 @@
 
 // importar da pasta 'node_modules' a package do React 
 import React from 'react';
-// importar o componente 'Tabela'
+// importar os componentes 'Tabela' e 'Formulario'
 import Tabela from './Tabela'
+import Formulario from './Formulario'
 // importar o CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -41,7 +42,11 @@ class App extends React.Component {
   }
 
 
-  // método que sabe identificar o 'aluno' que deverá ser retirado da tabela
+  
+  /**
+   * método que sabe identificar o 'aluno' que deverá ser retirado da tabela
+   * @param {*} index - dados do aluno a remover
+   */
   removeAluno = (index) => {
     // recuperar os alunos que estão representados na tabela
     const { alunos } = this.state
@@ -57,6 +62,19 @@ class App extends React.Component {
     });
   }
 
+  /**
+   * Adiciona os dados do novo aluno ao 'state'
+   * @param {*} novoAluno - dados do novo aluno, 
+   *                        recebidos do Formulário
+   */
+  adicionaAluno = (novoAluno) => {
+    this.setState({
+      alunos: [...this.state.alunos, novoAluno] 
+      // ... é um operador que junta a um array, um novo elemento
+    });
+  }
+
+
   // todas as classes terão, obrigatoriamente,
   // um método chamado 'render'
   render() {
@@ -66,7 +84,14 @@ class App extends React.Component {
     // todo o componente tem obrigatoriamente de 'devolver' alguma coisa
     return (
       <div className="container" > {/* e apenas consegue devolver um ÚNICO objeto */}
-        <h1>Lista com dados de alunos</h1>
+        <h1>Processar os dados dos alunos...</h1>
+        <h4>Adicionar aluno</h4>
+        {/* este Formulário irá receber os dados de um novo aluno */}
+        {/* o parâmetro 'dadosRecolhidos' é um parâmetro de 'saída'.
+            I.e., serve para retirar do 'Formulário' os dados que foram lá recolhidos */}
+        <Formulario dadosRecolhidos={this.adicionaAluno} />
+        <br />
+        <h4>Lista com dados de alunos</h4>
         <br />
         {/* 'dadosAlunos' é uma variável de entrada no componente
               Naturalmente, do lado do componente existirá um parâmetro para receber estes dados */}
