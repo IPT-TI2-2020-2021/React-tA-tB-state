@@ -58,7 +58,7 @@ class App extends React.Component {
       alunos: alunos.filter((aluno, i) => {
         // devolve todos os dados que não forem iguais ao index
         return i !== index
-      }),
+      })
     });
   }
 

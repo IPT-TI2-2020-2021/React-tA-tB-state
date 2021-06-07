@@ -11,7 +11,7 @@ class Formulario extends React.Component {
     // criar objeto que irá receber os dados do novo aluno
     novoAluno = {
         nome: "",
-        apelido: ""
+        apelido: "",
     }
 
     // adicionar este novo objeto ao 'state'
@@ -40,7 +40,7 @@ class Formulario extends React.Component {
      */
     submitForm = () => {
         // atribuir ao parâmetro de 'saída'-dadosRecolhidos- o conteúdo do state
-        this.props.dadosRecolhidos(this.state);
+        this.props.dadosRecolhidos(this.state);      
         this.setState(this.novoAluno);
     }
 
@@ -62,7 +62,7 @@ class Formulario extends React.Component {
                     value={apelido}
                     onChange={this.handlerAdicao}
                 /><br />
-                <input type="submit"
+                <input type="button"
                     className="btn btn-primary"
                     value="Adicionar"
                     onClick={this.submitForm}
